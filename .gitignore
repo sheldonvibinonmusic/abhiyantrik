@@ -1,4 +1,4 @@
-# Virtual Environments
+﻿# Virtual Environments
 .venv/
 .venv-transformer/
 venv/
@@ -14,3 +14,16 @@ __pycache__/
 *.safetensors
 models/
 reports/models/
+
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+round2-node/.env
+
+# Node dependencies and local runtime state
+round2-node/node_modules/
+round2-node/data/events.json
+round2-node/data/*.tmp
+predictions.csv
+submission.csv

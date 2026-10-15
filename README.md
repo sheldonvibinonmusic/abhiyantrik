@@ -1,6 +1,6 @@
-# Rogue Protocol — Round 1
+﻿# Rogue Protocol â€” Round 1
 
-**SMLRA × Abhiyantriki 2026 · Recalibrate**
+**SMLRA Ã— Abhiyantriki 2026 Â· Recalibrate**
 
 Ship time 2187-04-15, 03:12. The research vessel *Aurora* is three weeks from Earth. Its ship computer, **NINE**, writes every log line and raises every alarm. Six hours ago it stopped telling the truth.
 
@@ -107,7 +107,7 @@ If you build your own feature table instead, replace `model.predict_proba(val)[:
 Then:
 
 1. Set `THRESHOLD` in Act 3, then re-run Act 3 and Act 4. Expect the hidden test to land within a few points of your val F1. It can come out higher or lower.
-2. Val is 1,000 logs. F1 moves by about ±0.02 from chance alone. Keep a change when it helps by more than that.
+2. Val is 1,000 logs. F1 moves by about Â±0.02 from chance alone. Keep a change when it helps by more than that.
 3. Re-run Act 5 so `submission.csv` matches the model you just measured.
 
 ---
@@ -195,3 +195,7 @@ Your val F1 is the number to watch while you work. The hidden test is scored onc
 - [ ] `python check_submission.py submission.csv` prints TRANSMISSION VALID.
 - [ ] The file uploaded to the form is named `<team id>.csv`.
 - [ ] The card is at the card desk, with the team id, the three lines, and NINE's answer.
+
+## Round 2 system workflow
+
+See [ROUND2_SYSTEM_ARCHITECTURE.md](ROUND2_SYSTEM_ARCHITECTURE.md) for the MVP scope, API flow, Mermaid diagram, and implementation limits.

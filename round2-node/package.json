@@ -1,0 +1,9 @@
+{
+  "name": "rogue-protocol-round2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Round 2 incident monitoring and model integration",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "express": "^5.1.0", "nodemailer": "^7.0.0" }
+}
