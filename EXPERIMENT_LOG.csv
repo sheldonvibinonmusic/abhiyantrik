@@ -1,0 +1,9 @@
+exp_id,family,description,oof_f1_th50,oof_opt_th,oof_opt_f1,val_f1_at_oof_th,val_precision,val_recall,val_tp,val_fp,val_fn,val_tn,runtime_sec,status
+EXP_A_RAW_TEXT,NLP / TF-IDF Linear,"Word(1,2) + Char_wb(3,5) TF-IDF + Balanced LogisticRegression",0.5147,0.57,0.5192,0.5070,0.4932,0.5215,109,112,100,679,7.96,VERIFIED BY EXECUTION
+EXP_B_STRUCTURED_HGB,Ensemble Tree,60/40 HGB Blend (Regularized + Balanced) on 22 engineered features,0.6207,0.47,0.6285,0.6022,0.6871,0.5359,112,51,97,740,27.75,VERIFIED BY EXECUTION
+EXP_C_HYBRID_BLEND,Hybrid Text+Tree,Linear Blend (0.85 Structured HGB + 0.15 TF-IDF Text),0.6345,0.50,0.6345,0.6011,0.7006,0.5263,110,47,99,744,5.84,VERIFIED BY EXECUTION
+EXP_D_DETERMINISTIC_AUDIT,Statistical Audit,Collision and deterministic rule scan across identical feature groups,,,,,,,0,0,0,0,0.1,VERIFIED BY EXECUTION
+EXP_E_EXTRATREES,Randomized Forest,"ExtraTreesClassifier (100 trees, depth 12) on numerical engineered features",0.4731,0.26,0.5904,0.5851,0.5165,0.6746,141,132,68,659,3.06,VERIFIED BY EXECUTION
+TRANS_CAND_A1,Transformer Embeddings,"Frozen all-MiniLM-L6-v2 (384-dim) + Structured Features + Balanced LogReg",0.6512,0.61,0.6696,0.6602,0.6700,0.6507,136,67,73,724,4.34,VERIFIED BY EXECUTION
+TRANS_CAND_B,Transformer Fine-Tuned,"Fine-tuned distilbert-base-uncased (2 epochs, 100% local GPU, 3-fold)",0.5421,0.31,0.6155,0.5803,0.6328,0.5359,112,65,97,726,101.27,VERIFIED BY EXECUTION
+TRANS_CAND_C,Multimodal Hybrid,"Multimodal Blend (0.80 Structured HGB + 0.20 DistilBERT)",0.7912,0.43,0.8181,0.8111,0.8564,0.7703,161,27,48,764,2.50,VERIFIED BY EXECUTION

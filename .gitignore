@@ -1,0 +1,16 @@
+# Virtual Environments
+.venv/
+.venv-transformer/
+venv/
+env/
+
+# Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Pretrained Model Weights (> 50MB)
+*.safetensors
+models/
+reports/models/

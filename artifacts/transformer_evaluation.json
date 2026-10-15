@@ -1,0 +1,30 @@
+[
+  {
+    "model": "Benchmark Baseline (Existing Hybrid)",
+    "oof_f1": 0.6345,
+    "val_f1": 0.6011,
+    "th": 0.5,
+    "status": "EXISTING VERIFIED"
+  },
+  {
+    "model": "Candidate A1 (Frozen MiniLM + Structured LogReg)",
+    "oof_f1": 0.6696,
+    "val_f1": 0.6602,
+    "th": 0.61,
+    "status": "VERIFIED LOCAL"
+  },
+  {
+    "model": "Candidate B (Fine-tuned DistilBERT 100% Local)",
+    "oof_f1": 0.6155,
+    "val_f1": 0.5803,
+    "th": 0.31,
+    "status": "VERIFIED LOCAL"
+  },
+  {
+    "model": "Candidate C (Multimodal Fusion Hybrid)",
+    "oof_f1": 0.8181,
+    "val_f1": 0.8111,
+    "th": 0.43,
+    "status": "VERIFIED LOCAL"
+  }
+]

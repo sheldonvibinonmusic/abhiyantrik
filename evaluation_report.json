@@ -1,0 +1,49 @@
+{
+  "competition": "Rogue Protocol Round 1 (SMLRA x Abhiyantriki 2026)",
+  "target": "is_true_fault (1 = true fault, 0 = lie/noise)",
+  "official_metric": "F1-Score",
+  "dataset_split": {
+    "train_rows": 6000,
+    "train_fault_rate": 0.2158,
+    "val_rows": 1000,
+    "val_fault_rate": 0.209,
+    "test_rows": 3000,
+    "predicted_test_fault_rate": 0.2777
+  },
+  "baseline_metrics": {
+    "model": "Protocol v0 (Logistic Regression)",
+    "val_f1": 0.0094,
+    "precision": 0.3333,
+    "recall": 0.0048,
+    "confusion_matrix": {
+      "tp": 1,
+      "fp": 2,
+      "fn": 208,
+      "tn": 789
+    }
+  },
+  "final_selected_metrics": {
+    "model": "Ensemble Recalibration Classifier (Regularized + Balanced HGB Blend)",
+    "optimal_threshold": 0.33,
+    "5fold_cv_f1": 0.618,
+    "val_f1": 0.6278,
+    "precision": 0.5907,
+    "recall": 0.6699,
+    "confusion_matrix": {
+      "tp": 140,
+      "fp": 97,
+      "fn": 69,
+      "tn": 694
+    }
+  },
+  "submission_verification": {
+    "file": "submission.csv",
+    "row_count": 3000,
+    "columns": [
+      "log_id",
+      "is_true_fault"
+    ],
+    "flagged_faults": 833,
+    "checker_status": "TRANSMISSION VALID [OK]"
+  }
+}
