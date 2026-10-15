@@ -21,7 +21,7 @@ The Python API loads `model_artefact_verified.joblib` on startup and exposes `/h
 
 ## Email settings
 
-SMTP host, port, TLS mode, username, sender, and app password are loaded from ignored `round2-node/.env`. Keep `SMTP_PASS` only in that file. Enter the recipient and enable live alerts in Mission Control Settings; these two settings remain in backend memory until Node restarts. Verify SMTP before relying on live alerts. The test-email button sends a real test message; an SMTP accepted status is not proof of inbox delivery.
+SMTP host, port, TLS mode, username, sender, and app password are loaded from ignored `round2-node/.env`. Keep `SMTP_PASS` only in that file. Enter one or more comma-separated recipient addresses in Mission Control Settings. Recipients and the live-alert toggle remain in backend memory until Node restarts. A deliberate Run Simulation click automatically sends predicted fault alerts to all saved recipients when SMTP is configured; ordinary incoming-log alerts still follow the live-alert toggle. Verify SMTP before relying on live alerts. The test-email button sends a real test message; an SMTP accepted status is not proof of inbox delivery.
 
 Simulation uses random rows from `test.csv` and is marked as test data, not live telemetry. When live alerts are enabled, a recipient is saved, and SMTP credentials are configured, simulation automatically uses the saved recipient. Otherwise the run is dry-run. The default per-run email cap is one, with a hard cap of three.
 

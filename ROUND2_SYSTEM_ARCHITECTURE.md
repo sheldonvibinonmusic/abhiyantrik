@@ -4,7 +4,7 @@
 
 The current MVP accepts a log for classification, simulates bounded random rows from `test.csv`, records prediction outcomes locally, and can send SMTP email when live alerts are enabled. Simulation rows are test fixtures, not live vessel telemetry. SMTP acceptance is not proof of inbox delivery.
 
-The browser UI is served by Node at `http://127.0.0.1:3000`. It calls the same origin, so no frontend API URL needs to be entered. Node calls the local Python model service at `http://127.0.0.1:8000` by default; override `MODEL_URL` only to use a different service. Node reads SMTP secrets from `round2-node/.env`; the recipient and live-alert setting are entered in Settings and kept in backend memory until restart.
+The browser UI is served by Node at `http://127.0.0.1:3000`. It calls the same origin, so no frontend API URL needs to be entered. Node calls the local Python model service at `http://127.0.0.1:8000` by default; override `MODEL_URL` only to use a different service. Node reads SMTP secrets from `round2-node/.env`; the one or more comma-separated recipients and the live-alert setting are entered in Settings and kept in backend memory until restart. An explicit simulation run sends fault alerts to all saved recipients whenever SMTP is configured.
 
 ## Architecture
 
@@ -34,7 +34,7 @@ flowchart LR
 
 1. On page load, the UI calls `GET /api/health`, `GET /api/events`, and `GET /api/email/settings` on its own origin.
 2. `POST /api/predict` validates the submitted log, calls Python `/predict`, optionally dispatches email for a fault, then writes the event result to `round2-node/data/events.json`.
-3. `POST /api/simulate` samples random rows from `test.csv`, runs model inference concurrently in batches, applies dry-run/live notification rules, and records each result. Live mode requires a saved recipient, SMTP credentials, and enabled live alerts; simulation sends are capped by environment configuration.
+3. `POST /api/simulate` samples random rows from `test.csv`, runs model inference concurrently in batches, applies dry-run/live notification rules, and records each result. Explicit simulation sends use all saved recipients when SMTP credentials are configured; ordinary incoming-log alerts still follow the live-alert toggle. Simulation sends are capped by environment configuration.
 4. Email settings never expose the SMTP password. `POST /api/email/test` sends a real test message to the saved recipient; provider acceptance is not delivery confirmation.
 
 ## Implemented API surface

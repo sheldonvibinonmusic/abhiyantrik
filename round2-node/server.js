@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const crypto = require('node:crypto');
 const path = require('node:path');
 const fs = require('node:fs');
@@ -43,7 +43,10 @@ app.get('/api/email/settings', (_req, res) => res.json(publicSettings()));
 app.post('/api/email/settings', (req, res) => {
   const input = req.body || {};
   const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (input.recipient && !email.test(input.recipient)) return res.status(400).json({ error: 'Enter a valid recipient email address.' });
+  const values = Array.isArray(input.recipient) ? input.recipient : String(input.recipient || '').split(/[;,\r\n]+/);
+  const recipients = [...new Set(values.map(value => String(value).trim()).filter(Boolean))];
+  if (recipients.length > 10 || recipients.some(value => !email.test(value))) return res.status(400).json({ error: 'Enter up to 10 valid recipient email addresses, separated by commas.' });
+  input.recipient = recipients.join(', ');
   try { res.json(updateSettings(input)); }
   catch (error) { res.status(400).json({ error: 'Could not update SMTP settings.' }); }
 });
